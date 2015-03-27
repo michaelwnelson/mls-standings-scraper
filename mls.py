@@ -10,19 +10,30 @@ class Club:
 		self.abbreviation = abbreviation
 		self.subreddit = subreddit
 
-# Setup data for club information
-all_clubs = {
-	# MLS Club Name: Abbreviation, Subreddit
-	'Colorado Rapids': ['COL', '/r/rapids'],
-	'FC Dallas': ['DAL', '/r/fcdallas'],
-	'Houston Dynamo': ['HOU', '/r/dynamo'],
-	'LA Galaxy': ['LA', '/r/lagalaxy'],
-	'Portland Timbers': ['POR', '/r/timbers'],
-	'Real Salt Lake': ['RSL', '/r/realsaltlake'],
-	'San Jose Earthquakes': ['SJ', '/r/sjearthquakes'],
-	'Seattle Sounders FC': ['SEA', '/r/soundersfc'],
-	'Sporting Kansas City': ['SKC', '/r/sportingkc'],
-	'Vancouver Whitecaps FC': ['VAN', '/r/whitecapsfc']
+CHI = Club('Chicago Fire', 'CHI', '/r/chicagofire')
+COL = Club('Colorado Rapids', 'COL', '/r/rapids')
+CLB = Club('Columbus Crew SC', 'CLB', '/r/thremassive')
+DC = Club('D.C. United', 'DC', '/r/dcunited')
+FCD = Club('FC Dallas', 'DAL', '/r/fcdallas')
+HOU = Club('Houston Dynamo', 'HOU', '/r/dynamo')
+LAG = Club('LA Galaxy', 'LA', '/r/lagalaxy')
+MTL = Club('Montreal Impact', 'MTL', '/r/montrealimpact')
+NE = Club('New England Revolution', 'NE', '/r/newenglandrevolution')
+NYC = Club('New York City FC', 'NYC', '/r/nycfc')
+NYRB = Club('New York Red Bulls', 'NYRB', '/r/rbny')
+OCSC = Club('Orlando City SC', 'OCSC', '/r/oclions')
+PHI = Club('Philadelphia Union', 'PHI', '/r/phillyunion')
+POR = Club('Portland Timbers', 'POR', '/r/timbers')
+RSL = Club('Real Salt Lake', 'RSL', '/r/realsaltlake')
+SJ = Club('San Jose Earthquakes', 'SJ', '/r/sjearthquakes')
+SEA = Club('Seattle Sounders FC', 'SEA', '/r/soundersfc')
+SKC = Club('Sporting Kansas City', 'SKC', '/r/sportingkc')
+TOR = Club('Toronto FC', 'TFC', '/r/tfc')
+VAN = Club('Vancouver Whitecaps FC', 'VAN', '/r/whitecapsfc')
+
+ALL_CLUBS = {
+	CHI, COL, CLB, DC, FCD, HOU, LAG, MTL, NE, NYC, NYRB, OCSC, PHI, POR, RSL,
+	SJ, SEA, SKC, TOR, VAN
 }
 
 # Setup our variables for URLs and data to parse
