@@ -106,6 +106,12 @@ def setup(data):
 		club.goal_difference = gd
 		club.goals_for = gf
 
+def standings(conference):
+	clubs = sorted(ALL_CLUBS, key=lambda c: int(c.rank))
+	for club in clubs:
+		if club.conference == conference:
+			print club
+
 def main():
 	# Setup our variables for URLs and data to parse
 	standings_url = requests.get('http://www.mlssoccer.com/standings')
