@@ -61,16 +61,10 @@ def find_club(_club):
 
 	sys.exit("Could not find club %s" % _club)
 
-def link_club(_club):
-	abbr = all_clubs[_club][0]
-	sub = all_clubs[_club][1]
-	club = '[%s](%s)' % (abbr, sub)
-	return club
-
 def format_club(_club):
 	club = strip_text(_club)
-	club = link_club(club)
-	return club
+	club = find_club(club)
+	return club.formatted()
 
 # Print the standings to stdout
 for row in standings_data:
