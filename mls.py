@@ -91,7 +91,7 @@ def setup(data):
 def standings(conference):
 	clubs = sorted(ALL_CLUBS, key=lambda c: int(c.rank))
 	for club in clubs:
-		if club.conference == conference:
+		if club.conference.lower() == conference.lower():
 			print club
 
 def main():
