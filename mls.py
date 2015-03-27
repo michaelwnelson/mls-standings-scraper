@@ -39,18 +39,6 @@ ALL_CLUBS = {
 	SJ, SEA, SKC, TOR, VAN
 }
 
-# Setup our variables for URLs and data to parse
-standings_url = requests.get('http://www.mlssoccer.com/standings')
-standing_soup = bs4.BeautifulSoup(standings_url.text)
-
-# East Conference is the 1st table
-eastern_table = standing_soup.select('.stats-table')[0]
-eastern_data = eastern_table.find('tbody').find_all('tr')
-
-# Western Conference is the 2nd table
-western_table = standing_soup.select('.stats-table')[1]
-western_data = western_table.find('tbody').find_all('tr')
-
 def strip_text(text):
 	return text.get_text().strip();
 
@@ -76,3 +64,24 @@ def print_table(table):
 		gd = strip_text(cells[10])
 		gf = strip_text(cells[8])
 		print '%s|%s|%s|%s|%s|%s' % (rank, club, points, gp, gd, gf)
+
+def main():
+	# Setup our variables for URLs and data to parse
+	standings_url = requests.get('http://www.mlssoccer.com/standings')
+	standing_soup = bs4.BeautifulSoup(standings_url.text)
+
+	# East Conference is the 1st table
+	eastern_table = standing_soup.select('.stats-table')[0]
+	eastern_data = eastern_table.find('tbody').find_all('tr')
+
+	# Western Conference is the 2nd table
+	western_table = standing_soup.select('.stats-table')[1]
+	western_data = western_table.find('tbody').find_all('tr')
+
+	print "=== Eastern Conference ==="
+	print_table(eastern_data)
+	print "\n=== Western Conference ==="
+	print_table(western_data)
+
+if __name__ == '__main__':
+	main()
