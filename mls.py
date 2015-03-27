@@ -125,10 +125,12 @@ def main():
 	western_table = standing_soup.select('.stats-table')[1]
 	western_data = western_table.find('tbody').find_all('tr')
 
+	all_data = eastern_data + western_data
+	setup(all_data)
 	print "=== Eastern Conference ==="
-	print_table(eastern_data)
+	standings("Eastern")
 	print "\n=== Western Conference ==="
-	print_table(western_data)
+	standings("Western")
 
 if __name__ == '__main__':
 	main()
