@@ -35,9 +35,6 @@ class Club:
 			self.subreddit, self.points, self.games_played,
 			self.goal_difference, self.goals_for)
 
-	def formatted(self):
-		return '[%s](%s)' % (self.abbreviation, self.subreddit)
-
 CHI  = Club('Chicago Fire',           'CHI',  'Eastern', '/r/chicagofire')
 COL  = Club('Colorado Rapids',        'COL',  'Western', '/r/rapids')
 CLB  = Club('Columbus Crew SC',       'CLB',  'Eastern', '/r/thremassive')
@@ -73,21 +70,6 @@ def find_club(name):
 			return club
 
 	sys.exit("Could not find club %s" % name)
-
-def format_club(name):
-	club = find_club(strip_text(name))
-	return club.formatted()
-
-def print_table(table):
-	for row in table:
-		cells = row.find_all('td')
-		rank = strip_text(cells[0])
-		club = format_club(cells[1].find('a'))
-		points = '**%s**' % strip_text(cells[2])
-		gp = strip_text(cells[3])
-		gd = strip_text(cells[10])
-		gf = strip_text(cells[8])
-		print '%s|%s|%s|%s|%s|%s' % (rank, club, points, gp, gd, gf)
 
 def setup(data):
 	for row in data:
