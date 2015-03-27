@@ -30,6 +30,11 @@ class Club:
 		self.goal_difference = goal_difference
 		self.goals_for = goals_for
 
+	def __str__(self):
+		return '%s|[%s](%s)|**%s**|%s|%s|%s' % (self.rank, self.abbreviation,
+			self.subreddit, self.points, self.games_played,
+			self.goal_difference, self.goals_for)
+
 	def formatted(self):
 		return '[%s](%s)' % (self.abbreviation, self.subreddit)
 
