@@ -84,6 +84,23 @@ def print_table(table):
 		gf = strip_text(cells[8])
 		print '%s|%s|%s|%s|%s|%s' % (rank, club, points, gp, gd, gf)
 
+def setup(data):
+	for row in data:
+		cells = row.find_all('td')
+		rank = strip_text(cells[0])
+		name = strip_text(cells[1].find('a'))
+		points = strip_text(cells[2])
+		gp = strip_text(cells[3])
+		gd = strip_text(cells[10])
+		gf = strip_text(cells[8])
+		# Set Club's option attributes
+		club = find_club(name)
+		club.rank = rank
+		club.points = points
+		club.games_played = gp
+		club.goal_difference = gd
+		club.goals_for = gf
+
 def main():
 	# Setup our variables for URLs and data to parse
 	standings_url = requests.get('http://www.mlssoccer.com/standings')
