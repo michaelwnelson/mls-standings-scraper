@@ -40,9 +40,13 @@ ALL_CLUBS = {
 standings_url = requests.get('http://www.mlssoccer.com/standings')
 standing_soup = bs4.BeautifulSoup(standings_url.text)
 
+# East Conference is the 1st table
+eastern_table = standing_soup.select('.stats-table')[0]
+eastern_data = eastern_table.find('tbody').find_all('tr')
+
 # Western Conference is the 2nd table
-standings = standing_soup.select('.stats-table')[1]
-standings_data = standings.find('tbody').find_all('tr')
+western_table = standing_soup.select('.stats-table')[1]
+western_data = western_table.find('tbody').find_all('tr')
 
 def strip_text(text):
 	return text.get_text().strip();
