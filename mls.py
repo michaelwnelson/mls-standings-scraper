@@ -10,6 +10,9 @@ class Club:
 		self.abbreviation = abbreviation
 		self.subreddit = subreddit
 
+	def formatted(self):
+		return '[%s](%s)' % (self.abbreviation, self.subreddit)
+
 CHI = Club('Chicago Fire', 'CHI', '/r/chicagofire')
 COL = Club('Colorado Rapids', 'COL', '/r/rapids')
 CLB = Club('Columbus Crew SC', 'CLB', '/r/thremassive')
