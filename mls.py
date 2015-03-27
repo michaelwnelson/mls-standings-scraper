@@ -3,6 +3,13 @@
 import requests
 import bs4
 
+class Club:
+	"""A MLS Club"""
+	def __init__(self, name, abbreviation, subreddit):
+		self.name = name
+		self.abbreviation = abbreviation
+		self.subreddit = subreddit
+
 # Setup data for club information
 all_clubs = {
 	# MLS Club Name: Abbreviation, Subreddit
