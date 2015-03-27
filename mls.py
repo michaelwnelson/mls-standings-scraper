@@ -4,11 +4,31 @@ import requests
 import bs4
 
 class Club:
-	"""A MLS Club"""
-	def __init__(self, name, abbreviation, subreddit):
+	"""A MLS Club
+
+	Required Attributes:
+		name: The name of the club.
+		abbreviation: The common abbreviation for the club.
+		subreddit: The subreddit (per /r/mls) for the club.
+	Optional Attributes:
+		points: Total accumulated points.
+		games_played: Number of games played.
+		goal_difference: The positive or negative goal difference. This is
+			the sum of goals for and goals against.
+		goals_for: Total number of goals scored.
+	"""
+
+	def __init__(self, name, abbreviation, conference, subreddit, rank=0,
+				points=0, games_played=0, goal_difference=0, goals_for=0):
 		self.name = name
 		self.abbreviation = abbreviation
+		self.conference = conference
 		self.subreddit = subreddit
+		self.rank = rank
+		self.points = points
+		self.games_played = games_played
+		self.goal_difference = goal_difference
+		self.goals_for = goals_for
 
 	def formatted(self):
 		return '[%s](%s)' % (self.abbreviation, self.subreddit)
