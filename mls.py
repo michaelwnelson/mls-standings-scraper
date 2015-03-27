@@ -42,16 +42,15 @@ ALL_CLUBS = {
 def strip_text(text):
 	return text.get_text().strip();
 
-def find_club(_club):
-	for c in ALL_CLUBS:
-		if c.name.lower() == _club.lower():
-			return c
+def find_club(name):
+	for club in ALL_CLUBS:
+		if club.name.lower() == name.lower():
+			return club
 
-	sys.exit("Could not find club %s" % _club)
+	sys.exit("Could not find club %s" % name)
 
-def format_club(_club):
-	club = strip_text(_club)
-	club = find_club(club)
+def format_club(name):
+	club = find_club(strip_text(name))
 	return club.formatted()
 
 def print_table(table):
