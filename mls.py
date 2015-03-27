@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import sys
 import requests
 import bs4
 
@@ -50,6 +50,13 @@ western_data = western_table.find('tbody').find_all('tr')
 
 def strip_text(text):
 	return text.get_text().strip();
+
+def find_club(_club):
+	for c in ALL_CLUBS:
+		if c.name.lower() == _club.lower():
+			return c
+
+	sys.exit("Could not find club %s" % _club)
 
 def link_club(_club):
 	abbr = all_clubs[_club][0]
