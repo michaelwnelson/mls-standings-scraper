@@ -66,13 +66,13 @@ def format_club(_club):
 	club = find_club(club)
 	return club.formatted()
 
-# Print the standings to stdout
-for row in standings_data:
-	cells = row.find_all('td')
-	rank = strip_text(cells[0])
-	club = format_club(cells[1].find('a')) # find 'a' to ignore playoff indicator
-	points = '**%s**' % strip_text(cells[2])
-	gp = strip_text(cells[3])
-	gd = strip_text(cells[10])
-	gf = strip_text(cells[8])
-	print '%s|%s|%s|%s|%s|%s' % (rank, club, points, gp, gd, gf)
+def print_table(table):
+	for row in table:
+		cells = row.find_all('td')
+		rank = strip_text(cells[0])
+		club = format_club(cells[1].find('a'))
+		points = '**%s**' % strip_text(cells[2])
+		gp = strip_text(cells[3])
+		gd = strip_text(cells[10])
+		gf = strip_text(cells[8])
+		print '%s|%s|%s|%s|%s|%s' % (rank, club, points, gp, gd, gf)
