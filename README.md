@@ -56,6 +56,24 @@ Will provide a Markdown friendly output like so:
 10|[SKC](/r/sportingkc)|**2**|3|-2|2
 ```
 
+Refer to `fcd.py` for club specific information. It grabs the goals and assists for a given club in a given season.
+
+```
+=== GOALS ===
+[Blas Perez](http://www.mlssoccer.com/players/blas-perez "Blas Perez")|3
+[Tesho Akindele](http://www.mlssoccer.com/players/tesho-akindele "Tesho Akindele")|2
+[Fabian Castillo](http://www.mlssoccer.com/players/fabian-castillo "Fabian Castillo")|1
+[Ryan Hollingshead](http://www.mlssoccer.com/players/ryan-hollingshead "Ryan Hollingshead")|1
+[Michel](http://www.mlssoccer.com/players/michel-garbini-pereira "Michel")|0
+
+=== ASSISTS ===
+[Michel](http://www.mlssoccer.com/players/michel-garbini-pereira "Michel")|3
+[Fabian Castillo](http://www.mlssoccer.com/players/fabian-castillo "Fabian Castillo")|2
+[Atiba Harris](http://www.mlssoccer.com/players/atiba-harris "Atiba Harris")|1
+[Moises Hernandez](http://www.mlssoccer.com/players/moises-hernandez "Moises Hernandez")|1
+[Ryan Hollingshead](http://www.mlssoccer.com/players/ryan-hollingshead "Ryan Hollingshead")|1
+```
+
 ## Contributing
 
 Currently the script is setup to only parse the Western Table. Adding support for the Eastern table is trivial, and eventually I'd like to extend this to allow the user to pick which data points they desire.
