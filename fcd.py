@@ -66,6 +66,9 @@ def strip_text(text):
 
 def find_club(name):
 	for club in ALL_CLUBS:
+		# playoffs really mess this up
+		if name.startswith(("x", "y")):
+			name = name[4:]
 		if club.name.lower() == name.lower():
 			return club
 
@@ -75,11 +78,14 @@ def setup(data):
 	for row in data:
 		cells = row.find_all('td')
 		rank = strip_text(cells[0])
-		name = strip_text(cells[1].find('a'))
+		# skip first row of tables as it's a psuedo table header
+		if rank == "#":
+			continue
+		name = strip_text(cells[1])
 		points = strip_text(cells[2])
-		gp = strip_text(cells[3])
-		gd = strip_text(cells[10])
-		gf = strip_text(cells[8])
+		gp = strip_text(cells[5])
+		gd = strip_text(cells[11])
+		gf = strip_text(cells[9])
 		# Set Club's option attributes
 		club = find_club(name)
 		club.rank = rank
@@ -90,6 +96,8 @@ def setup(data):
 
 def standings(conference):
 	clubs = sorted(ALL_CLUBS, key=lambda c: int(c.rank))
+	print "Pos|Club|Pts|GP|GD|GF"
+	print ":--:|:--|:--:|:--:|:--:|:--:"
 	for club in clubs:
 		if club.conference.lower() == conference.lower():
 			print club
@@ -111,22 +119,22 @@ def stats(data, type):
 def main():
 	# Setup our variables for URLs and data to parse
 	standings_url = requests.get('http://www.mlssoccer.com/standings')
-	goals_url = requests.get('http://www.mlssoccer.com/stats/season?season_year=2015&season_type=REG&team=1903&group=GOALS')
-	assists_url = requests.get('http://www.mlssoccer.com/stats/season?season_year=2015&season_type=REG&team=1903&group=ASSISTS')
+	goals_url = requests.get('http://www.mlssoccer.com/stats/season?franchise=1903&year=2015&season_type=REG&group=goals')
+	assists_url = requests.get('http://www.mlssoccer.com/stats/season?franchise=1903&year=2015&season_type=REG&group=assists')
 	standing_soup = bs4.BeautifulSoup(standings_url.text)
 	goals_soup = bs4.BeautifulSoup(goals_url.text)
 	assits_soup = bs4.BeautifulSoup(assists_url.text)
 
 	# Western Conference is the 2nd table
-	western_table = standing_soup.select('.stats-table')[1]
+	western_table = standing_soup.select('.standings_table')[1]
 	western_data = western_table.find('tbody').find_all('tr')
 
 	# Grab the goals table
-	goals = goals_soup.select('.stats-table')[0]
+	goals = goals_soup.select('.season_stats')[0]
 	goals_data = goals.find('tbody').find_all('tr')
 
 	# Grab the assists table
-	assists = assits_soup.select('.stats-table')[0]
+	assists = assits_soup.select('.season_stats')[0]
 	assists_data = assists.find('tbody').find_all('tr')
 
 	setup(western_data)
