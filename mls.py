@@ -66,6 +66,9 @@ def strip_text(text):
 
 def find_club(name):
 	for club in ALL_CLUBS:
+		# playoffs really mess this up
+		if name.startswith(("x", "y")):
+			name = name[4:]
 		if club.name.lower() == name.lower():
 			return club
 
@@ -75,11 +78,14 @@ def setup(data):
 	for row in data:
 		cells = row.find_all('td')
 		rank = strip_text(cells[0])
-		name = strip_text(cells[1].find('a'))
+		# skip first row of tables as it's a psuedo table header
+		if rank == "#":
+			continue
+		name = strip_text(cells[1])
 		points = strip_text(cells[2])
-		gp = strip_text(cells[3])
-		gd = strip_text(cells[10])
-		gf = strip_text(cells[8])
+		gp = strip_text(cells[5])
+		gd = strip_text(cells[11])
+		gf = strip_text(cells[9])
 		# Set Club's option attributes
 		club = find_club(name)
 		club.rank = rank
@@ -90,6 +96,8 @@ def setup(data):
 
 def standings(conference):
 	clubs = sorted(ALL_CLUBS, key=lambda c: int(c.rank))
+	print "Pos|Club|Pts|GP|GD|GF"
+	print ":--:|:--|:--:|:--:|:--:|:--:"
 	for club in clubs:
 		if club.conference.lower() == conference.lower():
 			print club
@@ -100,11 +108,11 @@ def main():
 	standing_soup = bs4.BeautifulSoup(standings_url.text)
 
 	# East Conference is the 1st table
-	eastern_table = standing_soup.select('.stats-table')[0]
+	eastern_table = standing_soup.select('.standings_table')[0]
 	eastern_data = eastern_table.find('tbody').find_all('tr')
 
 	# Western Conference is the 2nd table
-	western_table = standing_soup.select('.stats-table')[1]
+	western_table = standing_soup.select('.standings_table')[1]
 	western_data = western_table.find('tbody').find_all('tr')
 
 	all_data = eastern_data + western_data
