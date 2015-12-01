@@ -67,7 +67,7 @@ def strip_text(text):
 def find_club(name):
 	for club in ALL_CLUBS:
 		# playoffs really mess this up
-		if name.startswith(("x", "y")):
+		if name.startswith(("x", "y", "s")):
 			name = name[4:]
 		if club.name.lower() == name.lower():
 			return club
