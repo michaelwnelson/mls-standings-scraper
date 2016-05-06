@@ -31,9 +31,13 @@ class Club:
 		self.goals_for = goals_for
 
 	def __str__(self):
-		return '%s|[%s](%s)|**%s**|%s|%s|%s' % (self.rank, self.abbreviation,
-			self.subreddit, self.points, self.games_played,
-			self.goal_difference, self.goals_for)
+		if self.abbreviation == 'DAL':
+			fmt = '**%s**|**[%s](%s)**|**%s**|**%s**|**%s**|**%s**'
+		else:
+			fmt = '%s|[%s](%s)|%s|%s|%s|%s'
+
+		return fmt % (self.rank, self.abbreviation, self.subreddit, self.points,
+				self.games_played, self.goal_difference, self.goals_for)
 
 CHI  = Club('Chicago Fire',           'CHI',  'Eastern', '/r/chicagofire')
 COL  = Club('Colorado Rapids',        'COL',  'Western', '/r/rapids')
