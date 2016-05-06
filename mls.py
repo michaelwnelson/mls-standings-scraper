@@ -105,7 +105,7 @@ def standings(conference):
 def main():
 	# Setup our variables for URLs and data to parse
 	standings_url = requests.get('http://www.mlssoccer.com/standings')
-	standing_soup = bs4.BeautifulSoup(standings_url.text)
+	standing_soup = bs4.BeautifulSoup(standings_url.text, "html.parser")
 
 	# East Conference is the 1st table
 	eastern_table = standing_soup.select('.standings_table')[0]
