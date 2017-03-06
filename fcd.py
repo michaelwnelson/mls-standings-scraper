@@ -116,7 +116,7 @@ def stats(data, type):
 			player_name = strip_text(cells[0])
 		url = cells[0].find('a').get('href')
 		goals = strip_text(cells[idx])
-		print '[%s](http://www.mlssoccer.com%s "%s")|%s' \
+		print '[%s](http://www.fcdallas.com%s "%s")|%s' \
 			% (player_name, url, player_name, goals)
 
 
