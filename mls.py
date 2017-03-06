@@ -35,6 +35,7 @@ class Club:
 			self.subreddit, self.points, self.games_played,
 			self.goal_difference, self.goals_for)
 
+ATL  = Club('Atlanta United FC',      'ATL',  'Eastern', '/r/atlantaunited')
 CHI  = Club('Chicago Fire',           'CHI',  'Eastern', '/r/chicagofire')
 COL  = Club('Colorado Rapids',        'COL',  'Western', '/r/rapids')
 CLB  = Club('Columbus Crew SC',       'CLB',  'Eastern', '/r/thremassive')
@@ -42,6 +43,7 @@ DC   = Club('D.C. United',            'DC',   'Eastern', '/r/dcunited')
 FCD  = Club('FC Dallas',              'DAL',  'Western', '/r/fcdallas')
 HOU  = Club('Houston Dynamo',         'HOU',  'Western', '/r/dynamo')
 LAG  = Club('LA Galaxy',              'LA',   'Western', '/r/lagalaxy')
+MNU  = Club('Minnesota United FC',    'MNU',  'Western', '/r/minnesotaunited')
 MTL  = Club('Montreal Impact',        'MTL',  'Eastern', '/r/montrealimpact')
 NE   = Club('New England Revolution', 'NE',   'Eastern', '/r/newenglandrevolution')
 NYC  = Club('New York City FC',       'NYC',  'Eastern', '/r/nycfc')
@@ -57,8 +59,8 @@ TOR  = Club('Toronto FC',             'TFC',  'Eastern', '/r/tfc')
 VAN  = Club('Vancouver Whitecaps FC', 'VAN',  'Western', '/r/whitecapsfc')
 
 ALL_CLUBS = {
-	CHI, COL, CLB, DC, FCD, HOU, LAG, MTL, NE, NYC, NYRB, OCSC, PHI, POR, RSL,
-	SJ, SEA, SKC, TOR, VAN
+	ATL, CHI, COL, CLB, DC, FCD, HOU, LAG, MNU, MTL, NE, NYC, NYRB, OCSC, PHI,
+	POR, RSL, SJ, SEA, SKC, TOR, VAN
 }
 
 def strip_text(text):
