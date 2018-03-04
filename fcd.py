@@ -125,8 +125,8 @@ def stats(data, type):
 def main():
 	# Setup our variables for URLs and data to parse
 	standings_url = requests.get('http://www.mlssoccer.com/standings')
-	goals_url = requests.get('http://www.mlssoccer.com/stats/season?franchise=1903&year=2017&season_type=REG&group=goals')
-	assists_url = requests.get('http://www.mlssoccer.com/stats/season?franchise=1903&year=2017&season_type=REG&group=assists')
+	goals_url = requests.get('http://www.mlssoccer.com/stats/season?franchise=1903&year=2018&season_type=REG&group=goals')
+	assists_url = requests.get('http://www.mlssoccer.com/stats/season?franchise=1903&year=2018&season_type=REG&group=assists')
 	standing_soup = bs4.BeautifulSoup(standings_url.text, "html.parser")
 	goals_soup = bs4.BeautifulSoup(goals_url.text, "html.parser")
 	assits_soup = bs4.BeautifulSoup(assists_url.text, "html.parser")
