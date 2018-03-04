@@ -84,7 +84,9 @@ def setup(data):
 		# skip first row of tables as it's a psuedo table header
 		if rank == "#":
 			continue
-		name = strip_text(cells[1])
+		# the table has classes to show the club name or abbreviation for
+		# desktop and mobile browsers, the below class is the full club name
+		name = strip_text(cells[1].select('.hide-on-mobile-inline')[0]);
 		points = strip_text(cells[2])
 		gp = strip_text(cells[5])
 		gd = strip_text(cells[11])
