@@ -22,13 +22,14 @@ class Club:
       the sum of goals for and goals against.
     goals_for: Total number of goals scored.
   """
-  def __init__(self, name, abbreviation, conference, subreddit, franchise,
+  def __init__(self, name, abbreviation, conference, subreddit, franchise, selected,
       rank=0, points=0, games_played=0, goal_difference=0, goals_for=0):
     self.name = name
     self.abbreviation = abbreviation
     self.conference = conference
     self.subreddit = subreddit
     self.franchise = franchise
+    self.selected = selected
     self.rank = rank
     self.points = points
     self.games_played = games_played
@@ -37,7 +38,7 @@ class Club:
 
 
   def __str__(self):
-    if self.abbreviation == 'DAL':
+    if self.selected:
       fmt = '**%s**|**[%s](%s)**|**%s**|**%s**|**%s**|**%s**'
     else:
       fmt = '%s|[%s](%s)|%s|%s|%s|%s'
@@ -52,7 +53,7 @@ def __strip_text(text):
 
 
 
-def __setup_clubs():
+def __setup_clubs(selected_club):
   with open("clubs.json") as data:
     clubs = json.load(data)
 
@@ -66,8 +67,12 @@ def __setup_clubs():
     conference = club['conference']
     subreddit = club['subreddit']
     franchise = club['franchise']
+    selected = False
 
-    club_object = Club(name, abbreviation, conference, subreddit, franchise)
+    if (selected_club):
+      selected = selected_club.lower() == abbreviation.lower()
+
+    club_object = Club(name, abbreviation, conference, subreddit, franchise, selected)
     ALL_CLUBS.add(club_object)
 
 
@@ -182,7 +187,7 @@ def __get_stats(club, group):
 
 
 def scrape(args):
-  __setup_clubs()
+  __setup_clubs(args.club)
   standings = __get_standings()
   eastern = __get_conference(standings, "Eastern")
   western = __get_conference(standings, "Western")
