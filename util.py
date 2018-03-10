@@ -1,9 +1,11 @@
 import bs4
+import datetime
 import json
 import requests
 import sys
 
 MLS_STANDINGS_URL = 'http://www.mlssoccer.com/standings'
+MLS_STATS_URL = 'https://www.mlssoccer.com/stats/season'
 ALL_CLUBS = set()
 
 class Club:
@@ -114,9 +116,15 @@ def __standings(conference):
 
 
 
-def __stats_table(data, group):
+def __stats_table(data, group, club = None):
   table = ''
-  idx = 5 if group.lower() == "goals" else 4
+
+  if (club):
+    # if a club is provided the Club column is not present
+    idx = 5 if group.lower() == "goals" else 4
+  else:
+    idx = 6 if group.lower() == "goals" else 5
+
   for row in data[:5]:
     cells = row.find_all('td')
     if cells[0].find('a') is not None:
@@ -129,6 +137,8 @@ def __stats_table(data, group):
       % (player_name, url, player_name, goals)
 
   return table
+
+
 
 def __get_standings():
   data = requests.get(MLS_STANDINGS_URL)
@@ -148,6 +158,29 @@ def __get_conference(standings, conference):
 
 
 
+def __get_stats(club, group):
+  # set defaults for year and season_type (where season_type is regular or post)
+  # TODO allow the user to specify year and season_type
+  year = datetime.datetime.now().year
+  season_type = 'REG'
+
+  url = MLS_STATS_URL + '?year=%s&season_type=%s' % (year, season_type)
+
+  if (club):
+    url += '&franchise=%s' % __find_club_by_abbreviation(club).franchise
+
+  if (group):
+    url += '&group=%s' % group
+
+  req = requests.get(url)
+  soup = bs4.BeautifulSoup(req.text, "html.parser")
+  table = soup.select('.season_stats')[0]
+  data = table.find('tbody').find_all('tr')
+
+  return __stats_table(data, group, club)
+
+
+
 def scrape(args):
   __setup_clubs()
   standings = __get_standings()
@@ -160,3 +193,9 @@ def scrape(args):
   __standings("Eastern")
   print "\n=== Western Conference ==="
   __standings("Western")
+
+  if(args.stats):
+    goals = __get_stats(args.club, 'goals')
+    print "\n=== GOALS ===\n", goals
+    assists = __get_stats(args.club, 'assists')
+    print "=== ASSISTS ===\n", assists
