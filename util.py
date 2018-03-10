@@ -114,8 +114,9 @@ def __standings(conference):
 
 
 
-def __stats(data, type):
-  idx = 5 if type.lower() == "goals" else 4
+def __stats_table(data, group):
+  table = ''
+  idx = 5 if group.lower() == "goals" else 4
   for row in data[:5]:
     cells = row.find_all('td')
     if cells[0].find('a') is not None:
@@ -124,10 +125,10 @@ def __stats(data, type):
       player_name = __strip_text(cells[0])
     url = cells[0].find('a').get('href')
     goals = __strip_text(cells[idx])
-    print '[%s](http://www.fcdallas.com%s "%s")|%s' \
+    table += '[%s](http://www.mlssoccer.com%s "%s")|%s \n' \
       % (player_name, url, player_name, goals)
 
-
+  return table
 
 def __get_standings():
   data = requests.get(MLS_STANDINGS_URL)
