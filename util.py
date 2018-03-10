@@ -70,12 +70,12 @@ def __setup_clubs():
 
 
 
-def __find_club(name):
+def __find_club_by_abbreviation(abbr):
   for club in ALL_CLUBS:
-    if club.name.lower() == name.lower():
+    if club.abbreviation.lower() == abbr.lower():
       return club
 
-  sys.exit("Could not find club %s" % name)
+  sys.exit("Could not find club by abbreviation: %s" % abbr)
 
 
 
@@ -89,12 +89,13 @@ def __add_data_to_clubs(data):
     # the table has classes to show the club name or abbreviation for
     # desktop and mobile browsers, the below class is the full club name
     name = __strip_text(cells[1].select('.hide-on-mobile-inline')[0])
+    abbreviation = __strip_text(cells[1].select('.show-on-mobile-inline')[0])
     points = __strip_text(cells[2])
     games_played = __strip_text(cells[5])
     goal_difference = __strip_text(cells[11])
     goals_for = __strip_text(cells[9])
-    # Set Club's option attributes
-    club = __find_club(name)
+    # Set Club's optional attributes
+    club = __find_club_by_abbreviation(abbreviation)
     club.rank = rank
     club.points = points
     club.games_played = games_played
