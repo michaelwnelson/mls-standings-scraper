@@ -186,6 +186,14 @@ def __get_stats(club, group):
 
 
 
+def __print_stats(club):
+  goals = __get_stats(club, 'goals')
+  print "\n=== GOALS ===\n", goals
+  assists = __get_stats(club, 'assists')
+  print "=== ASSISTS ===\n", assists
+
+
+
 def scrape(args):
   __setup_clubs(args.club)
   standings = __get_standings()
@@ -200,7 +208,4 @@ def scrape(args):
   __standings("Western")
 
   if(args.stats):
-    goals = __get_stats(args.club, 'goals')
-    print "\n=== GOALS ===\n", goals
-    assists = __get_stats(args.club, 'assists')
-    print "=== ASSISTS ===\n", assists
+    __print_stats(args.club)
