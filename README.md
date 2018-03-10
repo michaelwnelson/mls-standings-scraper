@@ -6,7 +6,7 @@ The idea stemmed from the desire to quickly interpret the standings in to a Mark
 
 ## Dependencies
 
-python, requests, beautifulsoup4
+python, pip, requests, beautifulsoup4
 
 ## Installation
 
@@ -22,13 +22,19 @@ Resolve dependencies:
 pip install -r requirements.txt
 ```
 
+Don't have pip? Refer to [their documentation for installation](https://pip.pypa.io/en/stable/installing/).
+
 ## Usage
+
+**Note**: Provide the `--help` argument for command line usage descriptions.
+
+Executing the script without any arguments:
 
 ```
 ./mls.py
 ```
 
-Will provide a Markdown friendly output like so:
+Will provide a Markdown friendly output of both conference tables:
 
 ```
 === Eastern Conference ===
@@ -56,9 +62,33 @@ Will provide a Markdown friendly output like so:
 10|[SKC](/r/sportingkc)|2|3|-2|2
 ```
 
-Refer to `fcd.py` for club specific information and formatting. It grabs the goals and assists for a given club in a given season.
+Use the `--club` argument to get a club's respective conference table. The club will emphasized with bolded formatting:
 
 ```
+$ ./mls --club dal
+
+=== Western Conference ===
+**1**|**[DAL](/r/fcdallas)**|**9**|**3**|**5**|**6**
+2|[SJ](/r/sjearthquakes)|6|3|1|5
+3|[VAN](/r/whitecapsfc)|6|3|0|3
+4|[LA](/r/lagalaxy)|5|3|2|5
+5|[HOU](/r/dynamo)|4|3|0|2
+6|[SEA](/r/soundersfc)|3|2|2|5
+7|[POR](/r/timbers)|3|3|0|2
+8|[COL](/r/rapids)|2|2|0|0
+9|[RSL](/r/realsaltlake)|2|2|0|3
+10|[SKC](/r/sportingkc)|2|3|-2|2
+```
+
+If you add the `--stats` argument, you will get both goals and assists statistics for the league.
+
+Combine the club `--club dal` argument with the `--stats` argument to get goals and assists specific to the club provided.
+
+Example output:
+
+```
+$ ./mls --club dal --stats
+
 === GOALS ===
 [Blas Perez](http://www.mlssoccer.com/players/blas-perez "Blas Perez")|3
 [Tesho Akindele](http://www.mlssoccer.com/players/tesho-akindele "Tesho Akindele")|2
@@ -75,8 +105,6 @@ Refer to `fcd.py` for club specific information and formatting. It grabs the goa
 ```
 
 ## Contributing
-
-Currently the script is setup to only parse the Western Table. Adding support for the Eastern table is trivial, and eventually I'd like to extend this to allow the user to pick which data points they desire.
 
 If you would like to contribute a new feature or bug fix:
 
