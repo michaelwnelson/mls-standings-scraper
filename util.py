@@ -150,6 +150,24 @@ def __get_standings():
   return bs4.BeautifulSoup(data.text, "html.parser")
 
 
+def __print_standings(club_abbreviation):
+  standings = __get_standings()
+  eastern = __get_conference(standings, "Eastern")
+  western = __get_conference(standings, "Western")
+  all_data = eastern + western
+  __add_data_to_clubs(all_data)
+
+  if (club_abbreviation):
+    club = __find_club_by_abbreviation(club_abbreviation)
+    print "=== %s Conference ===" % club.conference
+    __standings(club.conference)
+  else:
+    print "=== Eastern Conference ==="
+    __standings("Eastern")
+    print "\n=== Western Conference ==="
+    __standings("Western")
+
+
 
 def __get_conference(standings, conference):
   # East Conference is the 1st table
@@ -196,16 +214,8 @@ def __print_stats(club):
 
 def scrape(args):
   __setup_clubs(args.club)
-  standings = __get_standings()
-  eastern = __get_conference(standings, "Eastern")
-  western = __get_conference(standings, "Western")
 
-  all_data = eastern + western
-  __add_data_to_clubs(all_data)
-  print "=== Eastern Conference ==="
-  __standings("Eastern")
-  print "\n=== Western Conference ==="
-  __standings("Western")
+  __print_standings(args.club)
 
   if(args.stats):
     __print_stats(args.club)
