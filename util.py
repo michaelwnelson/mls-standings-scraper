@@ -145,7 +145,7 @@ def __get_conference(standings, conference):
 
 
 
-def scrape():
+def scrape(args):
   __setup_clubs()
   standings = __get_standings()
   eastern = __get_conference(standings, "Eastern")
