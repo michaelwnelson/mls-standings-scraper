@@ -1,0 +1,186 @@
+[
+  {
+    "name": "Atlanta United FC",
+    "abbreviation": "ATL",
+    "conference": "Eastern",
+    "subreddit": "/r/atlantaunited",
+    "website": "https://atlutd.com/",
+    "franchise": 11091
+  },
+  {
+    "name": "Chicago Fire",
+    "abbreviation": "CHI",
+    "conference": "Eastern",
+    "subreddit": "/r/chicagofire",
+    "website": "https://www.chicago-fire.com/",
+    "franchise": 1207
+  },
+  {
+    "name": "Colorado Rapids",
+    "abbreviation": "COL",
+    "conference": "Western",
+    "subreddit": "/r/rapids",
+    "website": "https://www.coloradorapids.com/",
+    "franchise": 436
+  },
+  {
+    "name": "Columbus Crew SC",
+    "abbreviation": "CLB",
+    "conference": "Eastern",
+    "subreddit": "/r/thremassive",
+    "website": "https://www.columbuscrewsc.com/",
+    "franchise": 454
+  },
+  {
+    "name": "D.C. United",
+    "abbreviation": "DC",
+    "conference": "Eastern",
+    "subreddit": "/r/dcunited",
+    "website": "https://www.dcunited.com/",
+    "franchise": 1326
+  },
+  {
+    "name": "FC Dallas",
+    "abbreviation": "DAL",
+    "conference": "Western",
+    "subreddit": "/r/fcdallas",
+    "website": "https://www.fcdallas.com/",
+    "franchise": 1903
+  },
+  {
+    "name": "Houston Dynamo",
+    "abbreviation": "HOU",
+    "conference": "Western",
+    "subreddit": "/r/dynamo",
+    "website": "https://www.houstondynamo.com/",
+    "franchise": 1897
+  },
+  {
+    "name": "Los Angeles Football Club",
+    "abbreviation": "LAFC",
+    "conference": "Western",
+    "subreddit": "/r/LAFC",
+    "website": "https://www.lafc.com/",
+    "franchise": 1230
+  },
+  {
+    "name": "LA Galaxy",
+    "abbreviation": "LA",
+    "conference": "Western",
+    "subreddit": "/r/lagalaxy",
+    "website": "https://www.lagalaxy.com/",
+    "franchise": 11690
+  },
+  {
+    "name": "Minnesota United FC",
+    "abbreviation": "MIN",
+    "conference": "Western",
+    "subreddit": "/r/minnesotaunited",
+    "website": "https://www.mnufc.com/",
+    "franchise": 6977
+  },
+  {
+    "name": "Montreal Impact",
+    "abbreviation": "MTL",
+    "conference": "Eastern",
+    "subreddit": "/r/montrealimpact",
+    "website": "https://www.impactmontreal.com/",
+    "franchise": 1616
+  },
+  {
+    "name": "New England Revolution",
+    "abbreviation": "NE",
+    "conference": "Eastern",
+    "subreddit": "/r/newenglandrevolution",
+    "website": "https://www.revolutionsoccer.net/",
+    "franchise": 928
+  },
+  {
+    "name": "New York City FC",
+    "abbreviation": "NYC",
+    "conference": "Eastern",
+    "subreddit": "/r/nycfc",
+    "website": "https://www.nycfc.com/",
+    "franchise": 9668
+  },
+  {
+    "name": "New York Red Bulls",
+    "abbreviation": "RBNY",
+    "conference": "Eastern",
+    "subreddit": "/r/rbny",
+    "website": "https://www.newyorkredbulls.com/",
+    "franchise": 399
+  },
+  {
+    "name": "Orlando City SC",
+    "abbreviation": "ORL",
+    "conference": "Eastern",
+    "subreddit": "/r/oclions",
+    "website": "https://www.orlandocitysc.com/",
+    "franchise": 6900
+  },
+  {
+    "name": "Philadelphia Union",
+    "abbreviation": "PHI",
+    "conference": "Eastern",
+    "subreddit": "/r/phillyunion",
+    "website": "https://www.philadelphiaunion.com/",
+    "franchise": 5513
+  },
+  {
+    "name": "Portland Timbers",
+    "abbreviation": "POR",
+    "conference": "Western",
+    "subreddit": "/r/timbers",
+    "website": "https://www.timbers.com/",
+    "franchise": 1581
+  },
+  {
+    "name": "Real Salt Lake",
+    "abbreviation": "RSL",
+    "conference": "Western",
+    "subreddit": "/r/realsaltlake",
+    "website": "https://www.rsl.com/",
+    "franchise": 1899
+  },
+  {
+    "name": "San Jose Earthquakes",
+    "abbreviation": "SJ",
+    "conference": "Western",
+    "subreddit": "/r/sjearthquakes",
+    "website": "https://www.sjearthquakes.com/",
+    "franchise": 1131
+  },
+  {
+    "name": "Seattle Sounders FC",
+    "abbreviation": "SEA",
+    "conference": "Western",
+    "subreddit": "/r/soundersfc",
+    "website": "https://www.soundersfc.com/",
+    "franchise": 3500
+  },
+  {
+    "name": "Sporting Kansas City",
+    "abbreviation": "SKC",
+    "conference": "Western",
+    "subreddit": "/r/sportingkc",
+    "website": "https://www.sportingkc.com/",
+    "franchise": 421
+  },
+  {
+    "name": "Toronto FC",
+    "abbreviation": "TOR",
+    "conference": "Eastern",
+    "subreddit": "/r/tfc",
+    "website": "https://www.torontofc.ca/",
+    "franchise": 2077
+  },
+  {
+    "name": "Vancouver Whitecaps FC",
+    "abbreviation": "VAN",
+    "conference": "Western",
+    "subreddit": "/r/whitecapsfc",
+    "website": "https://www.whitecapsfc.com/",
+    "franchise": 1708
+  }
+]

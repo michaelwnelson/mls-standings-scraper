@@ -1,4 +1,10 @@
+import bs4
+import json
+import requests
+import sys
+
 MLS_STANDINGS_URL = 'http://www.mlssoccer.com/standings'
+ALL_CLUBS = set()
 
 class Club:
   """A MLS Club
@@ -14,7 +20,6 @@ class Club:
       the sum of goals for and goals against.
     goals_for: Total number of goals scored.
   """
-
   def __init__(self, name, abbreviation, conference, subreddit, franchise_number,
       rank=0, points=0, games_played=0, goal_difference=0, goals_for=0):
     self.name = name
@@ -27,6 +32,7 @@ class Club:
     self.goal_difference = goal_difference
     self.goals_for = goals_for
 
+
   def __str__(self):
     if self.abbreviation == 'DAL':
       fmt = '**%s**|**[%s](%s)**|**%s**|**%s**|**%s**|**%s**'
@@ -36,37 +42,28 @@ class Club:
     return fmt % (self.rank, self.abbreviation, self.subreddit, self.points,
         self.games_played, self.goal_difference, self.goals_for)
 
-ATL  = Club('Atlanta United FC',         'ATL',  'Eastern', '/r/atlantaunited',         11091)
-CHI  = Club('Chicago Fire',              'CHI',  'Eastern', '/r/chicagofire',           1207)
-COL  = Club('Colorado Rapids',           'COL',  'Western', '/r/rapids',                436)
-CLB  = Club('Columbus Crew SC',          'CLB',  'Eastern', '/r/thremassive',           454)
-DC   = Club('D.C. United',               'DC',   'Eastern', '/r/dcunited',              1326)
-FCD  = Club('FC Dallas',                 'DAL',  'Western', '/r/fcdallas',              1903)
-HOU  = Club('Houston Dynamo',            'HOU',  'Western', '/r/dynamo',                1897)
-LAFC = Club('Los Angeles Football Club', 'LAFC', 'Western', '/r/LAFC',                  1230)
-LAG  = Club('LA Galaxy',                 'LA',   'Western', '/r/lagalaxy',              11690)
-MNU  = Club('Minnesota United FC',       'MNU',  'Western', '/r/minnesotaunited',       6977)
-MTL  = Club('Montreal Impact',           'MTL',  'Eastern', '/r/montrealimpact',        1616)
-NE   = Club('New England Revolution',    'NE',   'Eastern', '/r/newenglandrevolution',  928)
-NYC  = Club('New York City FC',          'NYC',  'Eastern', '/r/nycfc',                 9668)
-NYRB = Club('New York Red Bulls',        'NYRB', 'Eastern', '/r/rbny',                  399)
-OCSC = Club('Orlando City SC',           'OCSC', 'Eastern', '/r/oclions',               6900)
-PHI  = Club('Philadelphia Union',        'PHI',  'Eastern', '/r/phillyunion',           5513)
-POR  = Club('Portland Timbers',          'POR',  'Western', '/r/timbers',               1581)
-RSL  = Club('Real Salt Lake',            'RSL',  'Western', '/r/realsaltlake',          1899)
-SJ   = Club('San Jose Earthquakes',      'SJ',   'Western', '/r/sjearthquakes',         1131)
-SEA  = Club('Seattle Sounders FC',       'SEA',  'Western', '/r/soundersfc',            3500)
-SKC  = Club('Sporting Kansas City',      'SKC',  'Western', '/r/sportingkc',            421)
-TOR  = Club('Toronto FC',                'TFC',  'Eastern', '/r/tfc',                   2077)
-VAN  = Club('Vancouver Whitecaps FC',    'VAN',  'Western', '/r/whitecapsfc',           1708)
 
-ALL_CLUBS = {
-  ATL, CHI, COL, CLB, DC, FCD, HOU, LAFC, LAG, MNU, MTL, NE, NYC, NYRB, OCSC,
-  PHI, POR, RSL, SJ, SEA, SKC, TOR, VAN
-}
 
 def __strip_text(text):
-  return text.get_text().strip();
+  return text.get_text().strip()
+
+
+
+def __setup_clubs():
+  with open("clubs.json") as data:
+    clubs = json.load(data)
+
+  for club in clubs:
+    name = club['name']
+    abbreviation = club['abbreviation']
+    conference = club['conference']
+    subreddit = club['subreddit']
+    franchise = club['franchise']
+
+    club_object = Club(name, abbreviation, conference, subreddit, franchise)
+    ALL_CLUBS.add(club_object)
+
+
 
 def __find_club(name):
   for club in ALL_CLUBS:
@@ -78,7 +75,9 @@ def __find_club(name):
 
   sys.exit("Could not find club %s" % name)
 
-def setup(data):
+
+
+def __add_data_to_clubs(data):
   for row in data:
     cells = row.find_all('td')
     rank = __strip_text(cells[0])
@@ -87,20 +86,22 @@ def setup(data):
       continue
     # the table has classes to show the club name or abbreviation for
     # desktop and mobile browsers, the below class is the full club name
-    name = __strip_text(cells[1].select('.hide-on-mobile-inline')[0]);
+    name = __strip_text(cells[1].select('.hide-on-mobile-inline')[0])
     points = __strip_text(cells[2])
-    gp = __strip_text(cells[5])
-    gd = __strip_text(cells[11])
-    gf = __strip_text(cells[9])
+    games_played = __strip_text(cells[5])
+    goal_difference = __strip_text(cells[11])
+    goals_for = __strip_text(cells[9])
     # Set Club's option attributes
     club = __find_club(name)
     club.rank = rank
     club.points = points
-    club.games_played = gp
-    club.goal_difference = gd
-    club.goals_for = gf
+    club.games_played = games_played
+    club.goal_difference = goal_difference
+    club.goals_for = goals_for
 
-def standings(conference):
+
+
+def __standings(conference):
   clubs = sorted(ALL_CLUBS, key=lambda c: int(c.rank))
   print "Pos|Club|Pts|GP|GD|GF"
   print ":--:|:--|:--:|:--:|:--:|:--:"
@@ -108,7 +109,9 @@ def standings(conference):
     if club.conference.lower() == conference.lower():
       print club
 
-def stats(data, type):
+
+
+def __stats(data, type):
   idx = 5 if type.lower() == "goals" else 4
   for row in data[:5]:
     cells = row.find_all('td')
@@ -120,3 +123,36 @@ def stats(data, type):
     goals = __strip_text(cells[idx])
     print '[%s](http://www.fcdallas.com%s "%s")|%s' \
       % (player_name, url, player_name, goals)
+
+
+
+def __get_standings():
+  data = requests.get(MLS_STANDINGS_URL)
+  return bs4.BeautifulSoup(data.text, "html.parser")
+
+
+
+def __get_conference(standings, conference):
+  # East Conference is the 1st table
+  table_index = 0
+  if conference == "Western":
+    # Western Conference is the 2nd table
+    table_index = 1
+
+  table = standings.select('.standings_table')[table_index]
+  return table.find('tbody').find_all('tr')
+
+
+
+def scrape():
+  __setup_clubs()
+  standings = __get_standings()
+  eastern = __get_conference(standings, "Eastern")
+  western = __get_conference(standings, "Western")
+
+  all_data = eastern + western
+  __add_data_to_clubs(all_data)
+  print "=== Eastern Conference ==="
+  __standings("Eastern")
+  print "\n=== Western Conference ==="
+  __standings("Western")
