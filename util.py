@@ -20,12 +20,13 @@ class Club:
       the sum of goals for and goals against.
     goals_for: Total number of goals scored.
   """
-  def __init__(self, name, abbreviation, conference, subreddit, franchise_number,
+  def __init__(self, name, abbreviation, conference, subreddit, franchise,
       rank=0, points=0, games_played=0, goal_difference=0, goals_for=0):
     self.name = name
     self.abbreviation = abbreviation
     self.conference = conference
     self.subreddit = subreddit
+    self.franchise = franchise
     self.rank = rank
     self.points = points
     self.games_played = games_played
