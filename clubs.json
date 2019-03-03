@@ -4,7 +4,7 @@
     "abbreviation": "ATL",
     "conference": "Eastern",
     "subreddit": "/r/atlantaunited",
-    "website": "https://atlutd.com/",
+    "website": "https://atlutd.com",
     "franchise": 11091
   },
   {
@@ -12,7 +12,7 @@
     "abbreviation": "CHI",
     "conference": "Eastern",
     "subreddit": "/r/chicagofire",
-    "website": "https://www.chicago-fire.com/",
+    "website": "https://www.chicago-fire.com",
     "franchise": 1207
   },
   {
@@ -20,7 +20,7 @@
     "abbreviation": "COL",
     "conference": "Western",
     "subreddit": "/r/rapids",
-    "website": "https://www.coloradorapids.com/",
+    "website": "https://www.coloradorapids.com",
     "franchise": 436
   },
   {
@@ -28,7 +28,7 @@
     "abbreviation": "CLB",
     "conference": "Eastern",
     "subreddit": "/r/thremassive",
-    "website": "https://www.columbuscrewsc.com/",
+    "website": "https://www.columbuscrewsc.com",
     "franchise": 454
   },
   {
@@ -36,7 +36,7 @@
     "abbreviation": "DC",
     "conference": "Eastern",
     "subreddit": "/r/dcunited",
-    "website": "https://www.dcunited.com/",
+    "website": "https://www.dcunited.com",
     "franchise": 1326
   },
   {
@@ -44,7 +44,7 @@
     "abbreviation": "CIN",
     "conference": "Eastern",
     "subreddit": "/r/fccincinnati",
-    "website": "https://www.fccincinnati.com/",
+    "website": "https://www.fccincinnati.com",
     "franchise": 11504
   },
   {
@@ -52,7 +52,7 @@
     "abbreviation": "DAL",
     "conference": "Western",
     "subreddit": "/r/fcdallas",
-    "website": "https://www.fcdallas.com/",
+    "website": "https://www.fcdallas.com",
     "franchise": 1903
   },
   {
@@ -60,7 +60,7 @@
     "abbreviation": "HOU",
     "conference": "Western",
     "subreddit": "/r/dynamo",
-    "website": "https://www.houstondynamo.com/",
+    "website": "https://www.houstondynamo.com",
     "franchise": 1897
   },
   {
@@ -68,7 +68,7 @@
     "abbreviation": "LAFC",
     "conference": "Western",
     "subreddit": "/r/LAFC",
-    "website": "https://www.lafc.com/",
+    "website": "https://www.lafc.com",
     "franchise": 1230
   },
   {
@@ -76,7 +76,7 @@
     "abbreviation": "LA",
     "conference": "Western",
     "subreddit": "/r/lagalaxy",
-    "website": "https://www.lagalaxy.com/",
+    "website": "https://www.lagalaxy.com",
     "franchise": 11690
   },
   {
@@ -84,7 +84,7 @@
     "abbreviation": "MIN",
     "conference": "Western",
     "subreddit": "/r/minnesotaunited",
-    "website": "https://www.mnufc.com/",
+    "website": "https://www.mnufc.com",
     "franchise": 6977
   },
   {
@@ -92,7 +92,7 @@
     "abbreviation": "MTL",
     "conference": "Eastern",
     "subreddit": "/r/montrealimpact",
-    "website": "https://www.impactmontreal.com/",
+    "website": "https://www.impactmontreal.com",
     "franchise": 1616
   },
   {
@@ -100,7 +100,7 @@
     "abbreviation": "NE",
     "conference": "Eastern",
     "subreddit": "/r/newenglandrevolution",
-    "website": "https://www.revolutionsoccer.net/",
+    "website": "https://www.revolutionsoccer.net",
     "franchise": 928
   },
   {
@@ -108,7 +108,7 @@
     "abbreviation": "NYC",
     "conference": "Eastern",
     "subreddit": "/r/nycfc",
-    "website": "https://www.nycfc.com/",
+    "website": "https://www.nycfc.com",
     "franchise": 9668
   },
   {
@@ -116,7 +116,7 @@
     "abbreviation": "RBNY",
     "conference": "Eastern",
     "subreddit": "/r/rbny",
-    "website": "https://www.newyorkredbulls.com/",
+    "website": "https://www.newyorkredbulls.com",
     "franchise": 399
   },
   {
@@ -124,7 +124,7 @@
     "abbreviation": "ORL",
     "conference": "Eastern",
     "subreddit": "/r/oclions",
-    "website": "https://www.orlandocitysc.com/",
+    "website": "https://www.orlandocitysc.com",
     "franchise": 6900
   },
   {
@@ -132,7 +132,7 @@
     "abbreviation": "PHI",
     "conference": "Eastern",
     "subreddit": "/r/phillyunion",
-    "website": "https://www.philadelphiaunion.com/",
+    "website": "https://www.philadelphiaunion.com",
     "franchise": 5513
   },
   {
@@ -140,7 +140,7 @@
     "abbreviation": "POR",
     "conference": "Western",
     "subreddit": "/r/timbers",
-    "website": "https://www.timbers.com/",
+    "website": "https://www.timbers.com",
     "franchise": 1581
   },
   {
@@ -148,7 +148,7 @@
     "abbreviation": "RSL",
     "conference": "Western",
     "subreddit": "/r/realsaltlake",
-    "website": "https://www.rsl.com/",
+    "website": "https://www.rsl.com",
     "franchise": 1899
   },
   {
@@ -156,7 +156,7 @@
     "abbreviation": "SJ",
     "conference": "Western",
     "subreddit": "/r/sjearthquakes",
-    "website": "https://www.sjearthquakes.com/",
+    "website": "https://www.sjearthquakes.com",
     "franchise": 1131
   },
   {
@@ -164,7 +164,7 @@
     "abbreviation": "SEA",
     "conference": "Western",
     "subreddit": "/r/soundersfc",
-    "website": "https://www.soundersfc.com/",
+    "website": "https://www.soundersfc.com",
     "franchise": 3500
   },
   {
@@ -172,7 +172,7 @@
     "abbreviation": "SKC",
     "conference": "Western",
     "subreddit": "/r/sportingkc",
-    "website": "https://www.sportingkc.com/",
+    "website": "https://www.sportingkc.com",
     "franchise": 421
   },
   {
@@ -180,7 +180,7 @@
     "abbreviation": "TOR",
     "conference": "Eastern",
     "subreddit": "/r/tfc",
-    "website": "https://www.torontofc.ca/",
+    "website": "https://www.torontofc.ca",
     "franchise": 2077
   },
   {
@@ -188,7 +188,7 @@
     "abbreviation": "VAN",
     "conference": "Western",
     "subreddit": "/r/whitecapsfc",
-    "website": "https://www.whitecapsfc.com/",
+    "website": "https://www.whitecapsfc.com",
     "franchise": 1708
   }
 ]
