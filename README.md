@@ -19,7 +19,7 @@ git clone https://github.com/michaelwnelson/mls-standings-scraper
 Resolve dependencies:
 
 ```
-pip install -r requirements.txt
+pip install --user -r requirements.txt
 ```
 
 Don't have pip? Refer to [their documentation for installation](https://pip.pypa.io/en/stable/installing/).
