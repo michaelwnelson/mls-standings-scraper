@@ -22,12 +22,13 @@ class Club:
       the sum of goals for and goals against.
     goals_for: Total number of goals scored.
   """
-  def __init__(self, name, abbreviation, conference, subreddit, franchise, selected,
+  def __init__(self, name, abbreviation, conference, subreddit, website, franchise, selected,
       rank=0, points=0, games_played=0, goal_difference=0, goals_for=0):
     self.name = name
     self.abbreviation = abbreviation
     self.conference = conference
     self.subreddit = subreddit
+    self.website = website
     self.franchise = franchise
     self.selected = selected
     self.rank = rank
@@ -66,13 +67,14 @@ def __setup_clubs(selected_club):
     abbreviation = club['abbreviation']
     conference = club['conference']
     subreddit = club['subreddit']
+    website = club['website']
     franchise = club['franchise']
     selected = False
 
     if (selected_club):
       selected = selected_club.lower() == abbreviation.lower()
 
-    club_object = Club(name, abbreviation, conference, subreddit, franchise, selected)
+    club_object = Club(name, abbreviation, conference, subreddit, website, franchise, selected)
     ALL_CLUBS.add(club_object)
 
 
