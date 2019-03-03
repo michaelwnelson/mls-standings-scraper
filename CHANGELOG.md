@@ -1,3 +1,13 @@
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/michaelwnelson/mls-standings-scraper/compare/0.1.0...0.1.1) (2019-03-03)
+
+
+### Bug Fixes
+
+* upgrade to requests 2.20.0 ([dec2c82](https://github.com/michaelwnelson/mls-standings-scraper/commit/dec2c82))
+
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2018-03-10)
 
