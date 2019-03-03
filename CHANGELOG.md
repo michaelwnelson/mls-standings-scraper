@@ -1,3 +1,13 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/michaelwnelson/mls-standings-scraper/compare/0.1.1...0.2.0) (2019-03-03)
+
+
+### Features
+
+* use club website for stats table ([c3e1efc](https://github.com/michaelwnelson/mls-standings-scraper/commit/c3e1efc))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/michaelwnelson/mls-standings-scraper/compare/0.1.0...0.1.1) (2019-03-03)
 
