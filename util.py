@@ -4,6 +4,7 @@ import json
 import requests
 import sys
 
+MLS_URL = 'http://www.mlssoccer.com'
 MLS_STANDINGS_URL = 'http://www.mlssoccer.com/standings'
 MLS_STATS_URL = 'https://www.mlssoccer.com/stats/season'
 ALL_CLUBS = set()
@@ -123,11 +124,11 @@ def __standings(conference):
 
 
 
-def __stats_table(data, group, club = None):
+def __stats_table(data, group, club_abbreviation = None):
   table = ''
 
-  if (club):
-    # if a club is provided the Club column is not present
+  if (club_abbreviation):
+    # if a club_abbreviation is provided the Club column is not present
     idx = 5 if group.lower() == "goals" else 4
   else:
     idx = 6 if group.lower() == "goals" else 5
@@ -140,8 +141,15 @@ def __stats_table(data, group, club = None):
       player_name = __strip_text(cells[0])
     url = cells[0].find('a').get('href')
     goals = __strip_text(cells[idx])
-    table += '[%s](http://www.mlssoccer.com%s "%s")|%s \n' \
-      % (player_name, url, player_name, goals)
+
+    # default to MLS_URL, if club is provided use club's website to link to the player's profile
+    website = MLS_URL
+    if (club_abbreviation):
+      club = __find_club_by_abbreviation(club_abbreviation)
+      website = club.website
+
+    table += '[%s](%s "%s")|%s \n' \
+      % (player_name, website + url, player_name, goals)
 
   return table
 
