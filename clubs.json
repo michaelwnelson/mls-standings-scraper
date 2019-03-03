@@ -40,6 +40,14 @@
     "franchise": 1326
   },
   {
+    "name": "FC Cincinnati",
+    "abbreviation": "CIN",
+    "conference": "Eastern",
+    "subreddit": "/r/fccincinnati",
+    "website": "https://www.fccincinnati.com/",
+    "franchise": 11504
+  },
+  {
     "name": "FC Dallas",
     "abbreviation": "DAL",
     "conference": "Western",
