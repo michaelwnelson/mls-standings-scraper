@@ -12,21 +12,28 @@ ALL_CLUBS = set()
 
 
 class Club:
-  """A MLS Club
+  """
+  A MLS Club
 
   Required Attributes:
     name: The name of the club.
     abbreviation: The common abbreviation for the club.
+    conference: The conferences of the club.
     subreddit: The subreddit (per /r/mls) for the club.
+    website: The club's official website.
+    franchise: The unique ID of the club used for querying statistics
+    selected: Whether this club was specified by input.
   Optional Attributes:
+    rank: The club's rank.
     points: Total accumulated points.
     games_played: Number of games played.
-    goal_difference: The positive or negative goal difference. This is
-      the sum of goals for and goals against.
+    goal_difference: The positive or negative goal difference. This is the sum
+      of goals for and goals against.
     goals_for: Total number of goals scored.
   """
-  def __init__(self, name, abbreviation, conference, subreddit, website, franchise, selected,
-      rank=0, points=0, games_played=0, goal_difference=0, goals_for=0):
+  def __init__(self, name, abbreviation, conference, subreddit, website,
+      franchise, selected, rank=0, points=0, games_played=0, goal_difference=0,
+      goals_for=0):
     self.name = name
     self.abbreviation = abbreviation
     self.conference = conference
@@ -39,7 +46,6 @@ class Club:
     self.games_played = games_played
     self.goal_difference = goal_difference
     self.goals_for = goals_for
-
 
   def __str__(self):
     if self.selected:
