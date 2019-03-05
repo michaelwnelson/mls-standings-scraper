@@ -9,6 +9,8 @@ MLS_STANDINGS_URL = 'http://www.mlssoccer.com/standings'
 MLS_STATS_URL = 'https://www.mlssoccer.com/stats/season'
 ALL_CLUBS = set()
 
+
+
 class Club:
   """A MLS Club
 
@@ -158,6 +160,7 @@ def __stats_table(data, group, club_abbreviation = None):
 def __get_standings():
   data = requests.get(MLS_STANDINGS_URL)
   return bs4.BeautifulSoup(data.text, "html.parser")
+
 
 
 def __print_standings(club_abbreviation):
