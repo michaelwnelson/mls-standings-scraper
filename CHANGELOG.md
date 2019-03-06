@@ -1,3 +1,13 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/michaelwnelson/mls-standings-scraper/compare/0.2.0...0.2.1) (2019-03-06)
+
+
+### Bug Fixes
+
+* print markdown headers for stats ([d95e577](https://github.com/michaelwnelson/mls-standings-scraper/commit/d95e577))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/michaelwnelson/mls-standings-scraper/compare/0.1.1...0.2.0) (2019-03-03)
 
