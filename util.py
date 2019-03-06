@@ -7,6 +7,7 @@ import sys
 MLS_URL = 'http://www.mlssoccer.com'
 MLS_STANDINGS_URL = 'http://www.mlssoccer.com/standings'
 MLS_STATS_URL = 'https://www.mlssoccer.com/stats/season'
+MLS_INJURIES_URL = 'https://www.mlssoccer.com/injuries'
 ALL_CLUBS = set()
 
 
@@ -55,6 +56,14 @@ class Club:
 
     return fmt % (self.rank, self.abbreviation, self.subreddit, self.points,
         self.games_played, self.goal_difference, self.goals_for)
+
+  def print_injuries(self):
+    tmp = []
+    for injury in self.injuries:
+      tmp.append(injury)
+
+    return '\n'.join(tmp)
+
 
 
 
@@ -223,6 +232,21 @@ def __get_stats(club, group):
 
 
 
+def __set_injuries():
+  data = requests.get(MLS_INJURIES_URL)
+  soup = bs4.BeautifulSoup(data.text, "html.parser")
+
+  containers = soup.select('.card-container')
+  for container in containers:
+    container_id = container.get('id')
+    club_name = __strip_text(container.select('.clb-name h2')[0])
+    all_injuries = container.select('.card-body ul li')
+    stripped_injuries = [__strip_text(injury) for injury in all_injuries]
+    club = __find_club_by_abbreviation(container_id)
+    club.injuries = stripped_injuries
+
+
+
 def __print_stats(club):
   goals = __get_stats(club, 'goals')
   print "\n=== GOALS ==="
@@ -234,6 +258,23 @@ def __print_stats(club):
   print "Player|Assists"
   print ":--:|:--:"
   print assists
+
+
+
+def __print_injuries(club):
+  injuries = __set_injuries()
+
+  print "\n=== INJURIES ==="
+
+  if (club):
+    c = __find_club_by_abbreviation(club)
+    print c.print_injuries()
+  else:
+    clubs = sorted(ALL_CLUBS, key=lambda c: c.abbreviation)
+    for club in clubs:
+      print "# %s" % club.name
+      print club.print_injuries()
+      print ""
 
 
 
