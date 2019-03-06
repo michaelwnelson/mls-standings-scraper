@@ -1,3 +1,13 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/michaelwnelson/mls-standings-scraper/compare/0.2.1...0.3.0) (2019-03-06)
+
+
+### Features
+
+* add ability to print injuries ([94d8e3e](https://github.com/michaelwnelson/mls-standings-scraper/commit/94d8e3e))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/michaelwnelson/mls-standings-scraper/compare/0.2.0...0.2.1) (2019-03-06)
 
