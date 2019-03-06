@@ -285,3 +285,6 @@ def scrape(args):
 
   if(args.stats):
     __print_stats(args.club)
+
+  if(args.injuries):
+    __print_injuries(args.club)

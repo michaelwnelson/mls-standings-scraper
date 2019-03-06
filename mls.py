@@ -14,6 +14,9 @@ statistics will be unique to the club. Otherwise, it will be the league leaders.
 ''')
 parser.add_argument('--club', help='''Generate the conference table for the
 appropriate club. Example: --club dal (for FC Dallas).''')
+parser.add_argument('--injuries', action='store_true', help='''Generate a table,
+per club, of injured players. If a club is specified, the table will be unique
+to the club.''')
 
 def main():
   args = parser.parse_args()
