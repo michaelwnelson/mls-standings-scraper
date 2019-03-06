@@ -216,9 +216,15 @@ def __get_stats(club, group):
 
 def __print_stats(club):
   goals = __get_stats(club, 'goals')
-  print "\n=== GOALS ===\n", goals
+  print "\n=== GOALS ==="
+  print "Player|Goals"
+  print ":--:|:--:"
+  print goals
   assists = __get_stats(club, 'assists')
-  print "=== ASSISTS ===\n", assists
+  print "=== ASSISTS ==="
+  print "Player|Assists"
+  print ":--:|:--:"
+  print assists
 
 
 
