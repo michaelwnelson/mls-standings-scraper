@@ -80,6 +80,14 @@
     "franchise": 11690
   },
   {
+    "name": "Inter Miami CF",
+    "abbreviation": "MIA",
+    "conference": "Eastern",
+    "subreddit": "/r/intermiami",
+    "website": "https://www.intermiamicf.com",
+    "franchise": 6977
+  },
+  {
     "name": "Minnesota United FC",
     "abbreviation": "MIN",
     "conference": "Western",
@@ -94,6 +102,14 @@
     "subreddit": "/r/montrealimpact",
     "website": "https://www.impactmontreal.com",
     "franchise": 1616
+  },
+  {
+    "name": "Nashville SC",
+    "abbreviation": "NSH",
+    "conference": "Western",
+    "subreddit": "/r/nashvillesc",
+    "website": "https://www.nashvillesc.com",
+    "franchise": 15154
   },
   {
     "name": "New England Revolution",
