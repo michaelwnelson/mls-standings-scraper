@@ -113,3 +113,7 @@ If you would like to contribute a new feature or bug fix:
 3.  Commit your changes (`git commit -am 'Add some feature'`)
 4.  Push to the branch (`git push origin my-new-feature`)
 5.  Create a new Pull Request
+
+## Support Me
+
+You can support me by [buying me a beer 🍺](https://www.buymeacoffee.com/michaelwnelson)!
