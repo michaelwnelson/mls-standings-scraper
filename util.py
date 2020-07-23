@@ -50,11 +50,11 @@ class Club:
 
   def __str__(self):
     if self.selected:
-      fmt = '**%s**|**[%s](%s)**|**%s**|**%s**|**%s**|**%s**'
+      fmt = '**{}**|**[{}]({})**|**{}**|**{}**|**{}**|**{}**'
     else:
-      fmt = '%s|[%s](%s)|%s|%s|%s|%s'
+      fmt = '{}|[{}]({})|{}|{}|{}|{}'
 
-    return fmt % (self.rank, self.abbreviation, self.subreddit, self.points,
+    return fmt.format(self.rank, self.abbreviation, self.subreddit, self.points,
         self.games_played, self.goal_difference, self.goals_for)
 
   def print_injuries(self):
@@ -102,7 +102,7 @@ def __find_club_by_abbreviation(abbr):
     if club.abbreviation.lower() == abbr.lower():
       return club
 
-  sys.exit("Could not find club by abbreviation: %s" % abbr)
+  sys.exit("Could not find club by abbreviation: {}".format(abbr))
 
 
 
@@ -133,11 +133,11 @@ def __add_data_to_clubs(data):
 
 def __standings(conference):
   clubs = sorted(ALL_CLUBS, key=lambda c: int(c.rank))
-  print "Pos|Club|Pts|GP|GD|GF"
-  print ":--:|:--|:--:|:--:|:--:|:--:"
+  print("Pos|Club|Pts|GP|GD|GF")
+  print(":--:|:--|:--:|:--:|:--:|:--:")
   for club in clubs:
     if club.conference.lower() == conference.lower():
-      print club
+      print(club)
 
 
 
@@ -165,8 +165,7 @@ def __stats_table(data, group, club_abbreviation = None):
       club = __find_club_by_abbreviation(club_abbreviation)
       website = club.website
 
-    table += '[%s](%s "%s")|%s \n' \
-      % (player_name, website + url, player_name, goals)
+    table += '[{}]({} "{}")|{} \n'.format(player_name, website + url, player_name, goals)
 
   return table
 
@@ -187,12 +186,12 @@ def __print_standings(club_abbreviation):
 
   if (club_abbreviation):
     club = __find_club_by_abbreviation(club_abbreviation)
-    print "=== %s Conference ===" % club.conference
+    print ("=== {} Conference ===".format(club.conference))
     __standings(club.conference)
   else:
-    print "=== Eastern Conference ==="
+    print ("=== Eastern Conference ===")
     __standings("Eastern")
-    print "\n=== Western Conference ==="
+    print ("\n=== Western Conference ===")
     __standings("Western")
 
 
@@ -215,13 +214,13 @@ def __get_stats(club, group):
   year = datetime.datetime.now().year
   season_type = 'REG'
 
-  url = MLS_STATS_URL + '?year=%s&season_type=%s' % (year, season_type)
+  url = MLS_STATS_URL + '?year={}&season_type={}'.format(year, season_type)
 
   if (club):
-    url += '&franchise=%s' % __find_club_by_abbreviation(club).franchise
+    url += '&franchise={}'.format(__find_club_by_abbreviation(club).franchise)
 
   if (group):
-    url += '&group=%s' % group
+    url += '&group={}'.format(group)
 
   req = requests.get(url)
   soup = bs4.BeautifulSoup(req.text, "html.parser")
@@ -249,32 +248,32 @@ def __set_injuries():
 
 def __print_stats(club):
   goals = __get_stats(club, 'goals')
-  print "\n=== GOALS ==="
-  print "Player|Goals"
-  print ":--:|:--:"
-  print goals
+  print("\n=== GOALS ===")
+  print("Player|Goals")
+  print(":--:|:--:")
+  print(goals)
   assists = __get_stats(club, 'assists')
-  print "=== ASSISTS ==="
-  print "Player|Assists"
-  print ":--:|:--:"
-  print assists
+  print("=== ASSISTS ===")
+  print("Player|Assists")
+  print(":--:|:--:")
+  print(assists)
 
 
 
 def __print_injuries(club):
   injuries = __set_injuries()
 
-  print "\n=== INJURIES ==="
+  print("\n=== INJURIES ===")
 
   if (club):
     c = __find_club_by_abbreviation(club)
-    print c.print_injuries()
+    print(c.print_injuries())
   else:
     clubs = sorted(ALL_CLUBS, key=lambda c: c.abbreviation)
     for club in clubs:
-      print "# %s" % club.name
-      print club.print_injuries()
-      print ""
+      print("# {}".format(club.name))
+      print(club.print_injuries())
+      print("")
 
 
 
